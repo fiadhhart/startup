@@ -67,7 +67,10 @@
  ## github docs about Basic writing and formatting syntax
     [Github doc](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links)
  
-  
+# AWS server
+AWS server-EC2: Hart-cs260_startup_webserver
+IP address: http://3.220.98.222
+when in cs260 folder, ssh by: ssh -i keypair/cs260_keypair.pem ubuntu@3.220.98.222
 
 
 
