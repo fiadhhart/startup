@@ -69,10 +69,10 @@
  
 # AWS server
 AWS server-EC2: Hart-cs260_startup_webserver
-IP address: http://3.220.98.222
+IP address: 3.220.98.222
 when in cs260 folder, ssh by: ssh -i keypair/cs260_keypair.pem ubuntu@3.220.98.222
 # domain name
-http://palettepath.click
+https://palettepath.click
 and *.palettepath.click
 duration 1 year starting 14 sept 2024
 
