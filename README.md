@@ -54,3 +54,8 @@ Palette Path
    Scores and gameplay are accessible only to authenticated users
    ### Websocket
    As each user finishes, their score is broadcast to all other users
+
+# HTML Deliverable
+
+ I deployed simon to my production environment so it is accessable via simon.palettepath.click
+ 
