@@ -76,5 +76,8 @@ https://palettepath.click
 and *.palettepath.click
 duration 1 year starting 14 sept 2024
 
+# html
+  [HTML basics] (https://learn.cs260.click/page/html/introduction/introduction_md)
+
 
 
