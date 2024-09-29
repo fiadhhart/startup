@@ -2,17 +2,18 @@
 <html lang="en">
   
   <head>
-    <title>Palettepath Scores HTML</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palette Path Scores HTML</title>
+    <!-- Link to CSS file -->
   </head>
   
   <body>
     <header>
       <nav>
-        <menu>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="scores.html">Scores</a></li>
-          <li><a href="gameplay.html">Gameplay</a></li>
-        </menu>
+        <a href="index.html">Home</a>
+        <a href="scores.html">Scores</a>
+        <a href="gameplay.html">Gameplay</a>
       </nav>
       <hr />
     </header>
@@ -20,6 +21,7 @@
     <main>
       <p> Player Name </p>
       <h2> Scores </h2>
+      
       <table>
         <thead>
           <tr>
@@ -38,19 +40,23 @@
           </tr>
         </tbody>
       </table>
-      <form method="get" action="index.html">
-        <button type="submit">Logout</button>
-      </form>
-      <form method="get" action="gameplay.html">
-        <button type="submit">Play</button>
+
+      <br />
+      
+      <form method="get">
+        <button type="submit" formaction="index.html">Logout</button>
+        <button type="submit" formaction="gameplay.html">Play</button>
       </form>
     </main>
 
     <footer>
       <hr />
-      <p> Heidi Hart </p>
-      <a href="https://github.com/fiadhhart/startup">Github</a>
+      <div>
+        <p> Heidi Hart </p>
+        <a href="https://github.com/fiadhhart/startup">Github</a>
+      </div>
     </footer>
+    
   </body>
   
 </html>
