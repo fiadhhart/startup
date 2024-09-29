@@ -58,4 +58,14 @@ Palette Path
 # HTML Deliverable
 
  I deployed simon to my production environment so it is accessable via simon.palettepath.click
- 
+
+ For this deliverable I built out the structure of my application using HTML.
+ * HTML pages: I made 3 html pages for home, scores, and gameplay
+ * Structure: I organized consistently with appropriate tags
+ * Links: github is linked to in every footer; links to all pages are in every header; links to pages are available when appropriate
+ * Text and Images: All planned text and images are included
+ * Placeholders: placeholders for other technology is included, such as
+  - Login capability in index.html with username displayed in other pages
+  - Database storage with register in index.html and scores in scores.html
+  - Websockets with notifications in gameplay.html
+

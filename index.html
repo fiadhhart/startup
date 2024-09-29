@@ -19,14 +19,14 @@
     </header>
     
     <main>
-      <!-- use CSS to put the text over the background image -->
+      <!-- use CSS to put the text over the background image and size image -->
       <div class="image-container">
         <img src="images/cover.jpeg" alt="Background Cover Image" class="background-image"/>
         <h1 class="text-overlay">Palette Path</h1>
       </div>
       
       <p> Login to Play: </p>
-      <form method="post" action="scores.html">
+      <form method="get" action="scores.html">
         <ul>
           <div>
             <label for="username">Username:</label>
@@ -34,10 +34,10 @@
           </div>
           <div>
             <label for="password">Password:</label>
-            <input id="password" type="password" placeholder="password" required />
+            <input id="password" type="text" placeholder="password" required />
           </div>
-          <button type="submit" name="action" value="register">Register</button>
-          <button type="submit" name="action" value="login">Login</button>
+          <button type="submit">Register</button>
+          <button type="submit">Login</button>
         </ul>
       </form>
     </main>
