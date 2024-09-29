@@ -58,6 +58,7 @@ Palette Path
 # HTML Deliverable
 
  I deployed simon to my production environment so it is accessable via simon.palettepath.click
+ I also deployed my startup so it is accessable via https://startup.palettepath.click/
 
  For this deliverable I built out the structure of my application using HTML.
  * HTML pages: I made 3 html pages for home, scores, and gameplay
