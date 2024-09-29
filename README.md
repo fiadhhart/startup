@@ -69,4 +69,5 @@ Palette Path
   - Login capability in index.html with username displayed in other pages
   - Database storage with register in index.html and scores in scores.html
   - Websockets with notifications in gameplay.html
+  - 3rd party will be the data-colors in gameplay.html
 
