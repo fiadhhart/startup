@@ -79,7 +79,9 @@ body{
 
 .form-container {
     flex: 1;
-    margin-right: 5em;
+    margin-right: 2em;
+    background-color:whitesmoke;
+    padding: 2em;
 }
     h2 {
         text-align: start;
@@ -103,15 +105,15 @@ body{
         margin: 0 auto;
     }
     button {
-    background-color: navy;
-    color: white;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+        background-color: navy;
+        color: white;
+        padding: 0.5em 1em;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
     }
     button:hover {
-    background-color: blue;
+        background-color: blue;
     }
 
 
@@ -122,5 +124,10 @@ body{
     
     .text-overlay {
         font-size: 3em;
+    }
+
+    .form-container{
+        margin-right: 0;
+        margin-bottom: 1em;
     }
 }

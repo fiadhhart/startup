@@ -4,10 +4,54 @@ h2{
 
 
 
-
 .path-container{
-
+    margin: 0 auto;
+    background-color:white;
+    padding: 1em;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
 }
+.endpoints-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+tr:hover{
+    background-color: white;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+td{
+    width: 8%;
+    padding: 0;
+    height: 60px;
+}
+.fixed-color, .path-button {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.fixed-color {
+    border: 0;
+    background-color: #f0f0f0; /* Example background color */
+}
+.path-button {
+    border: 2px solid black;
+    background-color: #e0e0e0; /* Example background color */
+}
+.path-button:hover {
+    border: 2px solid red;
+    background-color: inherit;
+    transition: border 0.3s ease;
+}
+
+
 
 .colorOptions-container{
 
