@@ -1,55 +1,97 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /*min-width: 900px;*/
+}
+
 header{
+    flex: 0 25px;
+    display: flex;
+
     background: grey;
     border-radius: 5px;
-    padding: .5em;
-    margin-bottom: 1em;
+    padding: 0.5em;
+    
     border-bottom: thick navy solid;
 }
+header a{
+    padding: 0.25em;
+}
 footer{
-  background: grey;
-  border-radius: 5px;
-  padding: 0.5em;
-  margin-top: 1em;
-  border-top: thick navy solid;
+    flex: 0 25px;
+    display: flex;
+    flex-direction: column;
+
+    background: grey;
+    border-radius: 5px;
+    padding: 0.5em;
+    
+    border-top: thick navy solid;
+}
+footer a{
+    float: right;
 }
 
+
+
+main{
+    flex: 1;
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .image-container {
-  position: relative;
-  text-align: center;
+    position: relative;
+    text-align: center;
 }
 .background-image {
-  width: 50%;
-  height: auto;
-  border-radius: 5px;
+    width: 80%;
+    height: auto;
 }
-.text-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
+.text-overlay {/**/
+    position: absolute;
+    top: 20%;
+    /*left: 50%;*/
+    transform: translate(50%);
 
-  font-family: serif;
-  font-size: 5em;
-  color: navy;
-  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
-}
-
-
-p{
-  color: navy;
-}
-label{
-  color: navy;
-}
-input[type="text"] {
-  padding: 0.5em;
-  margin-bottom: 1em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    
+    font-size: 5em;
+    color: navy;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
 }
 
+.form-container {
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+}
+h2 {
+    text-align: center;
+    color: navy;
+    font-family: serif;
+}
+form div {
+    margin-bottom: 0.5em;
+    color: navy;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+}
 button {
   background-color: navy;
   color: white;
