@@ -1,4 +1,16 @@
-main{
-    flex-direction: column;
+.transition-container button {
+    margin: 0 20px;
+    font-size: 15px;
+}
+
+
+
+
+.path-container{
+
+}
+
+.colorOptions-container{
+
 }
 
