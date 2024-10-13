@@ -71,3 +71,14 @@ Palette Path
   - Websockets with notifications in gameplay.html
   - 3rd party will be the data-colors in gameplay.html
 
+# CSS Deliverable
+
+I deployed simon's css to my production environent as well as my own startup css.
+
+For this delieverable, I styled the application to its final appearance.
+ * header, footer, and main styled primarily in index.css with adjustments as needed in scores.css and gameplay.css
+ * navigation elements styled in the header to be recognizable
+ * responsive to window resizing and adjusts as needed when portrait mode
+ * application elements visually appealing with good whitespace and color
+ * application text content visually appealing with good sizing and color
+ * application image placed and sized as needed
