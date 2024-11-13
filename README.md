@@ -82,3 +82,7 @@ For this delieverable, I styled the application to its final appearance.
  * application elements visually appealing with good whitespace and color
  * application text content visually appealing with good sizing and color
  * application imager placed and sized as needed
+
+# React Deliverable
+
+ Had some errors, trying to fix
