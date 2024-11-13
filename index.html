@@ -1,60 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
     <title>Palette Path Index HTML</title>
-    <link rel="stylesheet" href="src/app.css"> <!-- Link to CSS file -->
   </head>
-  
   <body>
-
-    <header>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="scores.html">Scores</a>
-        <a href="gameplay.html">Gameplay</a>
-      </nav>
-    </header>
-    
-    <main>
-      <div class="image-container">
-        <!-- use CSS to put the text over the background image and size image -->
-        <img src="public/cover.png" alt="Background Cover Image" class="background-image"/>
-        <h1 class="text-overlay">Palette Path</h1>
-      </div>
-      
-      <div class="form-container">
-        <h2> Login to Play: </h2>
-        <form method="get" action="scores.html">
-          <ul>
-            <div>
-              <label for="username">Username:</label>
-              <input id="username" type="text" placeholder="username" required />
-            </div>
-            <div>
-              <label for="password">Password:</label>
-              <input id="password" type="password" placeholder="password" required />
-            </div>
-            <div class="transition-container">
-              <button type="submit">Register</button>
-              <button type="submit">Login</button>
-            </div>
-          </ul>
-        </form>
-      </div>
-    </main>
-
-    <footer>
-      <div>
-        <span> Heidi Hart </span>
-        <a href="https://github.com/fiadhhart/startup">Github</a>
-      </div>
-    </footer>
-    
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/index.jsx"></script>
   </body>
-  
 </html>
-
-
