@@ -81,4 +81,4 @@ For this delieverable, I styled the application to its final appearance.
  * responsive to window resizing and adjusts as needed when portrait mode
  * application elements visually appealing with good whitespace and color
  * application text content visually appealing with good sizing and color
- * application image placed and sized as needed
+ * application imager placed and sized as needed
