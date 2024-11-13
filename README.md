@@ -9,13 +9,13 @@ Palette Path
 
   ## Design
   Home/login page:
-  ![alt text](images/home_page.jpeg)
+  ![alt text](public/home_page.jpeg)
   Scores page:
-  ![alt text](images/scores_page.jpeg)
+  ![alt text](public/scores_page.jpeg)
   GamePlay page:
-  ![alt text](images/gameplay_page.jpeg)
+  ![alt text](public/gameplay_page.jpeg)
   Solution example:
-  ![alt text](images/solution_example.jpeg)
+  ![alt text](public/solution_example.jpeg)
   
   ## Key Features
   * User Authentication: Ability to register and log in, with data stored persistently
