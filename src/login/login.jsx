@@ -1,7 +1,11 @@
 import React from 'react';
 import './login.css';
 
-export function Login() {
+import { Unauthenticated } from './unauthenticated';
+import { Authenticated } from './authenticated';
+import { AuthState } from './authState';
+
+export function Login({ userName, authState, onAuthChange }) {
   return (
     <main>
     
@@ -11,25 +15,21 @@ export function Login() {
       </div>
       
       <div className="form-container">
-        <h2> Login to Play: </h2>
-        <form method="get" action="scores.html">
-          <ul>
-            <div>
-              <label for="username">Username:</label>
-              <input id="username" type="text" placeholder="username" required />
-            </div>
-            <div>
-              <label for="password">Password:</label>
-              <input id="password" type="password" placeholder="password" required />
-            </div>
-            <div className="transition-container">
-              <button className="registerButton" type="submit">Register</button>
-              <button className="loginButton" type="submit">Login</button>
-            </div>
-          </ul>
-        </form>
+        {authState !== AuthState.Unknown && <h2>Login to Play:</h2>}
+
+        {authState === AuthState.Authenticated && (
+          <Authenticated userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
+        )}
+
+        {authState === AuthState.Unauthenticated && (
+          <Unauthenticated
+            userName={userName}
+            onLogin={(loginUserName) => {
+              onAuthChange(loginUserName, AuthState.Authenticated);
+            }}
+          />
+        )}
       </div>
-  
     </main>
   );
 }

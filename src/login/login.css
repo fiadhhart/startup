@@ -45,34 +45,8 @@ main {
     h2 {
         text-align: start;
         color: navy;
-    }
-    form div {
-        margin-bottom: 0.5em;
-        color: navy;
-    }
-    input[type="text"], input[type="password"] {
-        width: 100%;
-        padding: 0.5em;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    .transition-container {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin: 0 auto;
-    }
-    .registerButton, .loginButton {
-        background-color: navy;
-        color: white;
-        padding: 0.5em 1em;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .registerButton:hover, .loginButton:hover {
-        background-color: blue;
+        padding-top: 10px;
+        padding-bottom: 30px;
     }
 
   @media (max-width: 768px) {

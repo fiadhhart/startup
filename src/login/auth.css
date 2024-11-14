@@ -1,0 +1,35 @@
+.playerName {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: 0.5em;
+}
+
+.transition-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.playButton, .logoutButton, .loginButton, .createButton {
+  background-color: navy;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.playButton:hover, .loginButton:hover, .createButton:hover {
+  background-color: blue;
+}
+
+.logoutButton {
+  background-color: grey;
+}
+.logoutButton:hover {
+  background-color: rgb(129, 45, 45);
+}
+
+

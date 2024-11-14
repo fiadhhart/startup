@@ -85,4 +85,4 @@ For this delieverable, I styled the application to its final appearance.
 
 # React Deliverable
 
- Had some errors, trying to fix
+ * coverted the HTML/CSS code into a modern web application using Vite and React

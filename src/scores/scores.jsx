@@ -5,7 +5,6 @@ export function Scores() {
   return (
     <main>
     <div className="scoresPG">
-
       <div className="status-container">
         <p>(Player Name)</p>
       </div>
@@ -56,8 +55,7 @@ export function Scores() {
           </tbody>
         </table>
       </div>
-      
-    </div>
+      </div>
     </main>
   );
 }
