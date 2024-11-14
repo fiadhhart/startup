@@ -1,59 +1,58 @@
-.body {
-    display: flex;
-    flex-direction: column;
-    min-width: 375px;
-
-    font-family: Tahoma;
+html {
+    height: 100%;
 }
 
-  
-  header {
-    flex: 0 80px;
-
-    background: grey;
-    border-radius: 5px;
-    border-bottom: thick navy solid;
-  }
-  menu {
-    flex: 1;
+.body{
     display: flex;
-    /*  overwrite Bootstrap so the menu does not wrap */
-    flex-direction: row !important;
-    list-style: none;
-  }
-  .navbar-brand {
-    padding-left: 0.3em;
-    border-bottom: solid whitesmoke thin;
-  }
-  menu .nav-item {
-    padding: 0 0.3em;
-  }
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 
-  
-  footer {
-    flex: 0 30px;
+    font-family: serif;
+    font-size: 20px;
+}
+    header{
+        flex: 0 50px;
+        display: flex;
+        flex-direction: column;
 
-    background: grey;
-    border-radius: 5px;
-    border-top: thick navy solid;
-  }
-  footer a {
-    float: right;
-  }
+        background: grey;
+        border-radius: 5px;
+        padding: 0.5em;
+        border-bottom: thick navy solid;
+    }
+    header a{
+        padding: 0.5em;
+    }
+
+    main{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    footer{
+        flex: 0 50px;
+        display: flex;
+        flex-direction: column;
+
+        background: grey;
+        border-radius: 5px;
+        padding: 0.5em;
+        border-top: thick navy solid;
+    }
+    footer a{
+        float: right;
+        margin-right: 1em;
+    }
 
 
 
 
-
-  main {
-    flex: 1 calc(100vh - 110px);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .image-container {
+.image-container {
     flex: 2;
     display: flex;
     background-size: contain;
@@ -61,30 +60,29 @@
     width: 100%;
     height: auto;
     position: relative;
-  }
+}
     .background-image {
         width: 100%;
         height: auto;
     }
     .text-overlay {
         position: absolute;
-        top: 45%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
         text-align: center;
 
         font-size: 4em;
-        font-weight: 500;
         color: navy;
-        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
     }
 
-  .form-container {
+.form-container {
     flex: 1;
     margin-right: 2em;
     background-color:whitesmoke;
     padding: 2em;
-  }
+}
     h2 {
         text-align: start;
         color: navy;
@@ -118,7 +116,8 @@
         background-color: blue;
     }
 
-  @media (max-width: 768px) {
+
+@media (max-width: 768px) {
     main{
         flex-direction: column;
     }
@@ -132,4 +131,5 @@
         margin-bottom: 1em;
     }
 }
-  
+
+
