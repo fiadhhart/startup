@@ -1,6 +1,14 @@
+/* for some reason, this needs to be a div, otherwise it messes with the login pg
 main{
     flex-direction: column;
     align-items: flex-start;
+    background-color:whitesmoke;
+}
+*/
+.scoresPG{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
     background-color:whitesmoke;
 }
 

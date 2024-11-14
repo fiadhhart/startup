@@ -29,6 +29,15 @@
     padding: 0 0.3em;
   }
 
+
+  main {
+    flex: 1 calc(100vh - 110px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
   
   footer {
     flex: 0 30px;
@@ -42,8 +51,6 @@
   }
 
 
-
-  
 
   
   .status-container{

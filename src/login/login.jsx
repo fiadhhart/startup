@@ -4,6 +4,7 @@ import './login.css';
 export function Login() {
   return (
     <main>
+    
       <div className="image-container">
         <img src="cover.png" alt="Background Cover Image" className="background-image"/>
         <h1 className="text-overlay">Palette Path</h1>
@@ -28,6 +29,7 @@ export function Login() {
           </ul>
         </form>
       </div>
+  
     </main>
   );
 }

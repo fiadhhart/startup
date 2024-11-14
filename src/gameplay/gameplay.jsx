@@ -4,6 +4,8 @@ import './gameplay.css';
 export function Gameplay() {
   return (
     <main>
+    <div className="gameplayPG">
+      
       <div className="status-container">
         <p> (Player Name) </p>
         <div id="timeSpent">(0 seconds)</div>
@@ -49,6 +51,7 @@ export function Gameplay() {
           <button className="color-button" id="color9" data-color="black" onclick=""></button>
       </div>
       
+    </div>
     </main>
   );
 }
