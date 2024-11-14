@@ -1,7 +1,7 @@
 import React from 'react';
 import './scores.css';
 
-export function Scores() {
+export function Scores({ userName }) {
   const [scores, setScores] = React.useState([]);
 
   // Demonstrates calling a service asynchronously so that
@@ -35,13 +35,24 @@ export function Scores() {
   }
 
   
+  const [quote, setQuote] = React.useState('Loading...');
+  const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
+
+  // We only want this to render the first time the component is created and so we provide an empty dependency list.
+  React.useEffect(() => {
+    setQuote('Show me the code');
+    setQuoteAuthor('Linus Torvalds');
+  }, []);
+  
+
+  
 
   return (
     <main>
     <div className="scoresPG">
-      
+
       <div className="status-container">
-        <p>(Player Name)</p>
+        <p> Player: {userName}</p>
       </div>
 
       <h2> Scores </h2>
@@ -58,6 +69,11 @@ export function Scores() {
           </thead>
           <tbody id='scores'>{scoreRows}</tbody>
         </table>
+      </div>
+
+      <div className='quote-box'>
+          <p className='quote'>{quote}</p>
+          <p className='author'>{quoteAuthor}</p>
       </div>
     
     </div>

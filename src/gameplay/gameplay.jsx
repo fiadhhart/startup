@@ -1,13 +1,13 @@
 import React from 'react';
 import './gameplay.css';
 
-export function Gameplay() {
+export function Gameplay({ userName }) {
   return (
     <main>
     <div className="gameplayPG">
       
       <div className="status-container">
-        <p> (Player Name) </p>
+        <p> Player: {userName} </p>
         <div id="timeSpent">(0 seconds)</div>
         <div className="notification">
           <label for="notification">Notifications:</label>

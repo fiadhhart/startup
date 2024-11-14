@@ -86,3 +86,16 @@ For this delieverable, I styled the application to its final appearance.
 # React Deliverable
 
  * coverted the HTML/CSS code into a modern web application using Vite and React
+
+ * login
+  - create,login
+  - logout,start
+  - only gives access to gameplay&scores tabs when authenticated
+ * scores
+  - populate scores
+  - quote (like simon's about)
+  - show username
+ * gameplay
+  - show username
+  - 
+ 

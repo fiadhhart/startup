@@ -53,9 +53,22 @@ function App() {
                         }
                         exact
                     />  
-                    <Route path='/' element={<Login />} exact />
-                    <Route path='/gameplay' element={<Gameplay />} />
-                    <Route path='/scores' element={<Scores />} />
+                    <Route 
+                        path='/gameplay' 
+                        element={
+                            <Gameplay
+                                userName={userName}
+                            />
+                        }
+                    />
+                    <Route 
+                        path='/scores' 
+                        element={
+                            <Scores 
+                                userName={userName}
+                            />
+                        } 
+                    />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
         

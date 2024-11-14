@@ -40,3 +40,29 @@ th {
 tr:hover {
     background-color: #e8e6e6;
 }
+
+
+
+.quote-box {
+    margin: 50px;
+    margin-bottom: 10px;
+    padding: 1em;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quote {
+    font-style: italic;
+    text-align: center;
+  }
+  
+  .author {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 100px;
+  }
+  
+  .author::before {
+    content: " - ";
+  }
