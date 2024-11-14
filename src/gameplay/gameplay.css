@@ -1,0 +1,80 @@
+main{
+    flex-direction: column;
+    align-items: flex-start;
+    background-color:whitesmoke;
+}
+
+
+h2{
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+}
+
+
+.path-container{
+    margin: 0 auto;
+    background-color:white;
+    padding: 1em;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+}
+.endpoints-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.palette-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+}
+
+
+.milestone-button {
+    cursor: not-allowed;
+    pointer-events: none;
+
+    width: 80px;
+    height: 60px;
+    border-radius: 20px;
+    border: 2px solid black;
+
+    background-color: red; /* Example background color */
+}
+.path-button {
+    width: 80px;
+    height: 60px;
+    border-radius: 20px;
+    border: 2px solid black;
+
+    background-color: yellow; /* Example background color */
+}
+.color-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 90% 50% 10% 50%; /* Creates the teardrop shape */
+    transform: rotate(225deg);
+    
+    border: 2px solid black;
+    background-color: #e0e0e0; /* Example background color */
+}
+
+.path-button:hover, .color-button:hover {
+    border: 2px solid red;
+    background-color: inherit;
+    transition: border 0.3s ease;
+}
