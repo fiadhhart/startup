@@ -8,21 +8,22 @@ export function Game({ userName }) {
     "olive", "aqua", "fuchsia", "silver", "gold", "chocolate", "salmon", "coral",
     "beige", "turquoise", "crimson", "lavender", "plum", "orchid", 
     "seashell", "snow", "sienna", "tan", "khaki", "ivory", "wheat"
-];
+  ];
 
   const [selectedColor, setSelectedColor] = useState(null);
   const [randomColors, setRandomColors] = useState([]);
+  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
     const getRandomColor = () => baseColors[Math.floor(Math.random() * baseColors.length)];
 
-    const colorButtons = [...Array(9)].map(() => getRandomColor());
-    const milestonePrep = [...Array(13)].map(() => getRandomColor());
+    const paintsPrep = [...Array(9)].map(() => getRandomColor());
+    const milestonesPrep = [...Array(13)].map(() => getRandomColor());
 
-    setRandomColors({ colorButtons, milestoneButtons: milestonePrep });
+    setRandomColors({ paintButtons: paintsPrep, milestoneButtons: milestonesPrep });
   }, []);
 
-  const handleColorButtonClick = (color) => {
+  const handlePaintButtonClick = (color) => {
     setSelectedColor(color);
     console.log(`Selected color: ${color}`);
   };
@@ -32,6 +33,16 @@ export function Game({ userName }) {
       button.style.backgroundColor = selectedColor;
       console.log(`Painted color: ${selectedColor}`);
     }
+  };
+
+
+
+  const checkSolution = () => {
+    const isSuccess =() => {
+        return false;
+    };
+
+    setSuccessMessage(isSuccess() ? "Success!" : "Keep Trying!");
   };
 
 
@@ -46,7 +57,7 @@ export function Game({ userName }) {
           <h3>Start</h3>
           <h3>Target</h3>
         </div>
-        <div className="input-container">
+        <div className="canvas-container">
             {[...Array(13)].map((_, i) => (
               <button
                 key={i}
@@ -63,15 +74,18 @@ export function Game({ userName }) {
       </div>
 
       <div className="palette-container">
-          {randomColors.colorButtons ? randomColors.colorButtons.map((color, i) => (
+          {randomColors.paintButtons ? randomColors.paintButtons.map((color, i) => (
             <button
               key={i}
-              className="color-button"
-              onClick={() => handleColorButtonClick(color)}
+              className="paint-button"
+              onClick={() => handlePaintButtonClick(color)}
               style={{ backgroundColor: color }}
             ></button>
           )) : null}
-        </div>
+      </div>
+
+      <button className='checkButton' onClick={checkSolution}>Check Solution</button>
+      {successMessage && <p>{successMessage}</p>}
       
     </div>
     </main>

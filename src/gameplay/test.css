@@ -81,11 +81,10 @@ h2{
 }
 
 .path-button:hover, .paint-button:hover {
-    border: 2px solid red;
+    border: 3px solid red;
     background-color: inherit;
     transition: border 0.3s ease;
 }
-
 
 .checkButton{
     background-color: white;
