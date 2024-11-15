@@ -51,8 +51,9 @@ export function Scores({ userName }) {
     <main>
     <div className="scoresPG">
 
-      <div className="status-container">
-        <p> Player: {userName}</p>
+      <div className="username-container">
+        Player
+        <span className='player-name'>{userName}</span>
       </div>
 
       <h2> Scores </h2>
