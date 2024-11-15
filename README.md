@@ -89,13 +89,19 @@ For this delieverable, I styled the application to its final appearance.
 
  * login
   - create,login
-  - logout,start
+  - logout,play
   - only gives access to gameplay&scores tabs when authenticated
  * scores
   - populate scores
   - quote (like simon's about)
   - show username
  * gameplay
-  - show username
+  - show username, 
+  - counts timer
+  - displays fake notifications
   - 
+
+ * NEED TO DO
+  - make sure can save a score. and check if populates correctly in scores
+  - gameplay functionality
  
