@@ -3,7 +3,7 @@ import './game.css';
 
 export function Game({ userName }) {
   const baseColors = [
-    "red", "blue", "green", "yellow", "purple", "orange", "pink", "cyan", "black",
+    "red", "blue", "green", "yellow", "purple", "orange", "pink", "black",
     "brown", "gray", "violet", "indigo", "lime", "magenta", "teal", "maroon", "navy", 
     "olive", "aqua", "fuchsia", "silver", "gold", "chocolate", "salmon", "coral",
     "beige", "turquoise", "crimson", "lavender", "plum", "orchid", 
@@ -17,10 +17,14 @@ export function Game({ userName }) {
   useEffect(() => {
     const getRandomColor = () => baseColors[Math.floor(Math.random() * baseColors.length)];
 
-    const paintsPrep = [...Array(9)].map(() => getRandomColor());
-    const milestonesPrep = [...Array(13)].map(() => getRandomColor());
+    
+    const finalSolution = [...Array(13)].map(() => getRandomColor()).sort(); // Sorted alphabetically
+    console.log("Final solution:", finalSolution);
 
-    setRandomColors({ paintButtons: paintsPrep, milestoneButtons: milestonesPrep });
+    const paintsPrep = finalSolution.filter((_, i) => i % 4 !== 0);
+    console.log("Paint colors:", paintsPrep);
+
+    setRandomColors({ paintButtons: paintsPrep, milestoneButtons: finalSolution });
   }, []);
 
   const handlePaintButtonClick = (color) => {
@@ -38,11 +42,16 @@ export function Game({ userName }) {
 
 
   const checkSolution = () => {
-    const isSuccess =() => {
-        return false;
+    const isSuccess = () => {
+      const allButtons = document.querySelectorAll('.canvas-container button');
+      const currSolution = Array.from(allButtons).map(button => button.style.backgroundColor);
+
+      console.log("Current solution:", currSolution);
+      
+      return randomColors.milestoneButtons.every((color, index) => color === currSolution[index]);
     };
 
-    setSuccessMessage(isSuccess() ? "Success!" : "Keep Trying!");
+    setSuccessMessage(isSuccess() ? "Success!" : "Keep Trying! hint: sort alphabetically");
   };
 
 
@@ -61,10 +70,10 @@ export function Game({ userName }) {
             {[...Array(13)].map((_, i) => (
               <button
                 key={i}
-                className={i % 3 === 0 ? "milestone-button" : "path-button"}
-                onClick={(e) => i % 3 !== 0 && handlePathButtonClick(e.target)}
+                className={i % 4 === 0 ? "milestone-button" : "path-button"}
+                onClick={(e) => i % 4 !== 0 && handlePathButtonClick(e.target)}
                 style={{
-                    backgroundColor: i % 3 === 0
+                    backgroundColor: i % 4 === 0
                       ? (randomColors.milestoneButtons && randomColors.milestoneButtons[i])
                       : "lightgray"
                   }}
