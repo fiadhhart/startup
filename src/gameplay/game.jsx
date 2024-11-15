@@ -1,7 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './game.css';
 
 export function Game({ userName }) {
+  const baseColors = [
+    "red", "blue", "green", "yellow", "purple", "orange", "pink", "cyan", "black",
+    "brown", "gray", "violet", "indigo", "lime", "magenta", "teal", "maroon", "navy", 
+    "olive", "aqua", "fuchsia", "silver", "gold", "chocolate", "salmon", "coral",
+    "beige", "turquoise", "crimson", "lavender", "plum", "orchid", 
+    "seashell", "snow", "sienna", "tan", "khaki", "ivory", "wheat"
+];
+
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [randomColors, setRandomColors] = useState([]);
+
+  useEffect(() => {
+    const getRandomColor = () => baseColors[Math.floor(Math.random() * baseColors.length)];
+
+    const colorButtons = [...Array(9)].map(() => getRandomColor());
+    const milestonePrep = [...Array(13)].map(() => getRandomColor());
+
+    setRandomColors({ colorButtons, milestoneButtons: milestonePrep });
+  }, []);
+
+  const handleColorButtonClick = (color) => {
+    setSelectedColor(color);
+    console.log(`Selected color: ${color}`);
+  };
+
+  const handlePathButtonClick = (button) => {
+    if (selectedColor) {
+      button.style.backgroundColor = selectedColor;
+      console.log(`Painted color: ${selectedColor}`);
+    }
+  };
+
+
   return (
     <main>
     <div className="gamePG">
@@ -14,33 +47,31 @@ export function Game({ userName }) {
           <h3>Target</h3>
         </div>
         <div className="input-container">
-            <button className="milestone-button" id="milestone1" data-color="purple"></button>
-            <button className="path-button" id="path1" onclick=""></button>
-            <button className="path-button" id="path2" onclick=""></button>
-            <button className="milestone-button" id="milestone2" data-color="blue"></button>
-            <button className="path-button" id="path3" onclick=""></button>
-            <button className="path-button" id="path4" onclick=""></button>
-            <button className="path-button" id="path5" onclick=""></button>
-            <button className="milestone-button" id="milestone3" data-color="green"></button>
-            <button className="path-button" id="path6" onclick=""></button>
-            <button className="path-button" id="path7" onclick=""></button>
-            <button className="path-button" id="path8" onclick=""></button>
-            <button className="path-button" id="path9" onclick=""></button>
-            <button className="milestone-button" id="milestone4" data-color="brown"></button>
+            {[...Array(13)].map((_, i) => (
+              <button
+                key={i}
+                className={i % 3 === 0 ? "milestone-button" : "path-button"}
+                onClick={(e) => i % 3 !== 0 && handlePathButtonClick(e.target)}
+                style={{
+                    backgroundColor: i % 3 === 0
+                      ? (randomColors.milestoneButtons && randomColors.milestoneButtons[i])
+                      : "lightgray"
+                  }}
+              ></button>
+            ))}
         </div>
       </div>
 
       <div className="palette-container">
-          <button className="color-button" id="color1" data-color="red" onclick=""></button>
-          <button className="color-button" id="color2" data-color="blue" onclick=""></button>
-          <button className="color-button" id="color3" data-color="green" onclick=""></button>
-          <button className="color-button" id="color4" data-color="yellow" onclick=""></button>
-          <button className="color-button" id="color5" data-color="purple" onclick=""></button>
-          <button className="color-button" id="color6" data-color="orange" onclick=""></button>
-          <button className="color-button" id="color7" data-color="pink" onclick=""></button>
-          <button className="color-button" id="color8" data-color="cyan" onclick=""></button>
-          <button className="color-button" id="color9" data-color="black" onclick=""></button>
-      </div>
+          {randomColors.colorButtons ? randomColors.colorButtons.map((color, i) => (
+            <button
+              key={i}
+              className="color-button"
+              onClick={() => handleColorButtonClick(color)}
+              style={{ backgroundColor: color }}
+            ></button>
+          )) : null}
+        </div>
       
     </div>
     </main>
