@@ -32,8 +32,8 @@ const rgbToHsb = (colorName) => {
     const brightness = max;
   
     return { h, s, b: brightness };
-  };
-  
+};
+
 
 export function Game({ userName }) {
   const baseColors = [
@@ -47,6 +47,7 @@ export function Game({ userName }) {
   const [selectedColor, setSelectedColor] = useState(null);
   const [randomColors, setRandomColors] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
+  const [score, setScore] = useState(1000);
 
   useEffect(() => {
     const getRandomColor = () => baseColors[Math.floor(Math.random() * baseColors.length)];
@@ -73,8 +74,14 @@ export function Game({ userName }) {
 
   const handlePathButtonClick = (button) => {
     if (selectedColor) {
+      const originalColor = button.style.backgroundColor;
       button.style.backgroundColor = selectedColor;
-      console.log(`Painted color: ${selectedColor}`);
+      
+      // Only subtract points if the color has changed
+      if (originalColor !== selectedColor) {
+        setScore(prevScore => prevScore - 10); // Subtract 10 points for each color change
+        console.log(`Painted color: ${selectedColor}`);
+      }
     }
   };
 
@@ -90,9 +97,48 @@ export function Game({ userName }) {
       return randomColors.milestoneButtons.every((color, index) => color === currSolution[index]);
     };
 
-    setSuccessMessage(isSuccess() ? "Success!" : "Keep Trying! hint: sort by hue");
+    if (isSuccess()) {
+      setSuccessMessage("Success!");
+      saveScore(score);
+    } else {
+      setSuccessMessage("Keep Trying! hint: sort by hue");
+    }
   };
 
+  const saveScore = (score) => {
+    const date = new Date().toLocaleDateString();
+    const newScore = { name: userName, score: score, date: date };
+
+    console.log(`Saving score: ${newScore}`);
+    updateScoresLocal(newScore);
+  };
+
+  function updateScoresLocal(newScore) {
+    let scores = [];
+    const scoresText = localStorage.getItem('scores');
+    if (scoresText) {
+      scores = JSON.parse(scoresText);
+    }
+
+    let found = false;
+    for (const [i, prevScore] of scores.entries()) {
+      if (newScore.score > prevScore.score) {
+        scores.splice(i, 0, newScore);
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      scores.push(newScore);
+    }
+
+    if (scores.length > 10) {
+      scores.length = 10;
+    }
+
+    localStorage.setItem('scores', JSON.stringify(scores));
+  }
 
   return (
     <main>
@@ -134,7 +180,7 @@ export function Game({ userName }) {
 
       <button className='checkButton' onClick={checkSolution}>Check Solution</button>
       {successMessage && <p>{successMessage}</p>}
-      
+      <p>Points: {score}</p>
     </div>
     </main>
   );

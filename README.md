@@ -85,23 +85,26 @@ For this delieverable, I styled the application to its final appearance.
 
 # React Deliverable
 
- * coverted the HTML/CSS code into a modern web application using Vite and React
-
- * login
-  - create,login
-  - logout,play
-  - only gives access to gameplay&scores tabs when authenticated
- * scores
-  - populate scores
-  - quote (like simon's about)
-  - show username
- * gameplay
-  - show username, 
-  - counts timer
-  - displays fake notifications
-  - 
-
- * NEED TO DO
-  - make sure can save a score. and check if populates correctly in scores
-  - gameplay functionality
+ * Bundled using Vite 
+  - coverted the HTML/CSS code into a modern web application using Vite and React
  
+ * React components implement/mock all app functionality
+  1. login
+    - can create or login with username/password
+    - can logout or move on to gameplay page when appropriate
+    - only gives access to gameplay & scores tabs when authenticated
+  2. scores
+    - populate scores with local storage - to be replaced by database later
+    - prepped to display quote (like simon's about) from 3rd party
+    - displays current username
+  3. gameplay
+    - displays current username
+    - displays timer for how long on page
+    - displays fake notifications to be replaced by websockets later
+    - gameplay funtionality
+    - calculates and displays points, sends score to local storage when succeeds
+
+  * React router
+   - routes between Login/Home, Gameplay, and Scores
+  * React hooks
+   - game, players, scores use useEffect hooks
