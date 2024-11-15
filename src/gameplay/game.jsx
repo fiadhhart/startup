@@ -1,6 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import './game.css';
 
+// Helper: Convert a color name to HSB values
+const rgbToHsb = (colorName) => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = colorName;
+    const [r, g, b] = ctx.fillStyle
+      .match(/^#([0-9a-f]{6})$/i)[1]
+      .match(/.{2}/g)
+      .map(hex => parseInt(hex, 16));
+  
+    const rPerc = r / 255, gPerc = g / 255, bPerc = b / 255;
+    const max = Math.max(rPerc, gPerc, bPerc);
+    const min = Math.min(rPerc, gPerc, bPerc);
+    const delta = max - min;
+  
+    // Hue
+    let h;
+    if (delta === 0) h = 0;
+    else if (max === rPerc) h = ((gPerc - bPerc) / delta) % 6;
+    else if (max === gPerc) h = (bPerc - rPerc) / delta + 2;
+    else h = (rPerc - gPerc) / delta + 4;
+    h = Math.round(h * 60);
+    if (h < 0) h += 360;
+  
+    // Saturation
+    const s = max === 0 ? 0 : delta / max;
+  
+    // Brightness
+    const brightness = max;
+  
+    return { h, s, b: brightness };
+  };
+  
+
 export function Game({ userName }) {
   const baseColors = [
     "red", "blue", "green", "yellow", "purple", "orange", "pink", "black",
@@ -17,12 +51,17 @@ export function Game({ userName }) {
   useEffect(() => {
     const getRandomColor = () => baseColors[Math.floor(Math.random() * baseColors.length)];
 
-    
-    const finalSolution = [...Array(13)].map(() => getRandomColor()).sort(); // Sorted alphabetically
+    /*const finalSolution = [...Array(13)].map(() => getRandomColor()).sort(); // Sorted alphabetically*/
+    const finalSolution = [...Array(13)].map(() => getRandomColor())
+      .sort((a, b) => rgbToHsb(a).h - rgbToHsb(b).h); // Sort by hue
     console.log("Final solution:", finalSolution);
 
     const paintsPrep = finalSolution.filter((_, i) => i % 4 !== 0);
-    console.log("Paint colors:", paintsPrep);
+    for (let i = paintsPrep.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [paintsPrep[i], paintsPrep[j]] = [paintsPrep[j], paintsPrep[i]];
+    }
+    console.log("Shuffled paint colors:", paintsPrep);
 
     setRandomColors({ paintButtons: paintsPrep, milestoneButtons: finalSolution });
   }, []);
@@ -51,7 +90,7 @@ export function Game({ userName }) {
       return randomColors.milestoneButtons.every((color, index) => color === currSolution[index]);
     };
 
-    setSuccessMessage(isSuccess() ? "Success!" : "Keep Trying! hint: sort alphabetically");
+    setSuccessMessage(isSuccess() ? "Success!" : "Keep Trying! hint: sort by hue");
   };
 
 
@@ -75,7 +114,7 @@ export function Game({ userName }) {
                 style={{
                     backgroundColor: i % 4 === 0
                       ? (randomColors.milestoneButtons && randomColors.milestoneButtons[i])
-                      : "lightgray"
+                      : "whitesmoke"
                   }}
               ></button>
             ))}
