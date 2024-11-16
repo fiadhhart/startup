@@ -108,3 +108,5 @@ For this delieverable, I styled the application to its final appearance.
    - routes between Login/Home, Gameplay, and Scores
   * React hooks
    - game, players, scores use useEffect hooks
+
+# Service Deliverable
