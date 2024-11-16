@@ -18,8 +18,13 @@ export function Scores(props) {
         setScores(scores);
       });
 
-    setQuote('Show me the code');
-    setQuoteAuthor('Linus Torvalds');
+      fetch('https://quote.cs260.click')
+      .then((response) => response.json())
+      .then((data) => {
+        setQuote(data.quote);
+        setQuoteAuthor(data.author);
+      })
+      .catch();
   }, []);
 
   // Demonstrates rendering an array with React
