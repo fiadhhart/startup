@@ -1,0 +1,111 @@
+//Add the basic Express JavaScript code needed to make a service.
+const express = require('express');
+const app = express();
+
+const port = process.argv.length > 2 ? process.argv[2] : 3000;
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
+
+/*Install UUID. 
+The service represents its tokens with a universally unique ID (UUID) and so we need to
+ import that NPM package using npm install uuid and then import it into the code.*/
+const uuid = require('uuid');
+
+/*Parse JSON. All of our endpoints use JSON and so we want Express to automatically parse that for us. */
+app.use(express.json());
+
+/*Create the memory data structures. Add data structures for both the users and the scores. That means 
+whenever the service is restarted the users and scores will be lost. When we introduce the database in 
+a later deliverable, the data will be persistent there. */
+let users = {};
+let scores = [];
+
+/*Set up a router path for the endpoints. We want all of our endpoints to have a path prefix of /api so
+ that we can distinguish them from requests to load the front end files. This is done with a express.Router call. */
+var apiRouter = express.Router();
+app.use(`/api`, apiRouter);
+
+
+/*Add the service endpoints. Add all of the code for the different Simon endpoints. */
+  // CreateAuth a new user
+  apiRouter.post('/auth/create', async (req, res) => {
+    const user = users[req.body.email];
+    if (user) {
+      res.status(409).send({ msg: 'Existing user' });
+    } else {
+      const user = { email: req.body.email, password: req.body.password, token: uuid.v4() };
+      users[user.email] = user;
+  
+      res.send({ token: user.token });
+    }
+  });
+  
+  // GetAuth login an existing user
+  apiRouter.post('/auth/login', async (req, res) => {
+    const user = users[req.body.email];
+    if (user) {
+      if (req.body.password === user.password) {
+        user.token = uuid.v4();
+        res.send({ token: user.token });
+        return;
+      }
+    }
+    res.status(401).send({ msg: 'Unauthorized' });
+  });
+  
+  // DeleteAuth logout a user
+  apiRouter.delete('/auth/logout', (req, res) => {
+    const user = Object.values(users).find((u) => u.token === req.body.token);
+    if (user) {
+      delete user.token;
+    }
+    res.status(204).end();
+  });
+  
+  // GetScores
+  apiRouter.get('/scores', (_req, res) => {
+    res.send(scores);
+  });
+  
+  // SubmitScore
+  apiRouter.post('/score', (req, res) => {
+    scores = updateScores(req.body, scores);
+    res.send(scores);
+  });
+  
+  // updateScores considers a new score for inclusion in the high scores.
+  function updateScores(newScore, scores) {
+    let found = false;
+    for (const [i, prevScore] of scores.entries()) {
+      if (newScore.score > prevScore.score) {
+        scores.splice(i, 0, newScore);
+        found = true;
+        break;
+      }
+    }
+  
+    if (!found) {
+      scores.push(newScore);
+    }
+  
+    if (scores.length > 10) {
+      scores.length = 10;
+    }
+  
+    return scores;
+  }
+
+/*add the Express middleware to serve static files from the the public directory. */
+app.use(express.static('public'));
+
+
+
+
+//FIXME - added because in simon, wasn't told to
+// Return the application's default page if the path is unknown
+app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+  });
+
