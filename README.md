@@ -108,3 +108,23 @@ For this delieverable, I styled the application to its final appearance.
    - routes between Login/Home, Gameplay, and Scores
   * React hooks
    - game, players, scores use useEffect hooks
+
+# Service Deliverable
+
+ * setup backend service with endpoints
+ * saving scores in gameplay and retreiving scores in scores uses endpoints
+ * 
+
+
+
+
+# Todo?
+DATABASE
+actually authenticate users
+scores in database
+
+SERVICE
+quote from 3rd party
+
+WEBSOCKET
+notifications

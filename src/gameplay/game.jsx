@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { GameEvent, GameNotifier } from './gameNotifier';
 import './game.css';
 
 // Helper: Convert a color name to HSB values
-const rgbToHsb = (colorName) => {
+function rgbToHsb(colorName) {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = colorName;
@@ -35,7 +36,8 @@ const rgbToHsb = (colorName) => {
 };
 
 
-export function Game({ userName }) {
+export function Game(props) {
+  const userName = props.userName;
   const baseColors = [
     "red", "blue", "green", "yellow", "purple", "orange", "pink", "black",
     "brown", "gray", "violet", "indigo", "lime", "magenta", "teal", "maroon", "navy", 
@@ -44,15 +46,31 @@ export function Game({ userName }) {
     "seashell", "snow", "sienna", "tan", "khaki", "ivory", "wheat"
   ];
 
-  const [selectedColor, setSelectedColor] = useState(null);
-  const [randomColors, setRandomColors] = useState([]);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [score, setScore] = useState(1000);
+  const [selectedColor, setSelectedColor] = React.useState(null);
+  const [randomColors, setRandomColors] = React.useState([]);
+  const [successMessage, setSuccessMessage] = React.useState("");
+  const [score, setScore] = React.useState(1000);
 
-  useEffect(() => {
+  async function handlePaintButtonClick(color) {
+    setSelectedColor(color);
+    console.log(`Selected color: ${color}`);
+  }
+
+  async function handlePathButtonClick(button) {
+    if (selectedColor) {
+      const originalColor = button.style.backgroundColor;
+      button.style.backgroundColor = selectedColor;
+      
+      // Only subtract points if the color has changed
+      if (originalColor !== selectedColor) {
+        setScore(prevScore => prevScore - 10); // Subtract 10 points for each color change
+      }
+    }
+  }
+
+  React.useEffect(() => {
     const getRandomColor = () => baseColors[Math.floor(Math.random() * baseColors.length)];
 
-    /*const finalSolution = [...Array(13)].map(() => getRandomColor()).sort(); // Sorted alphabetically*/
     const finalSolution = [...Array(13)].map(() => getRandomColor())
       .sort((a, b) => rgbToHsb(a).h - rgbToHsb(b).h); // Sort by hue
     console.log("Final solution:", finalSolution);
@@ -67,33 +85,13 @@ export function Game({ userName }) {
     setRandomColors({ paintButtons: paintsPrep, milestoneButtons: finalSolution });
   }, []);
 
-  const handlePaintButtonClick = (color) => {
-    setSelectedColor(color);
-    console.log(`Selected color: ${color}`);
-  };
-
-  const handlePathButtonClick = (button) => {
-    if (selectedColor) {
-      const originalColor = button.style.backgroundColor;
-      button.style.backgroundColor = selectedColor;
-      
-      // Only subtract points if the color has changed
-      if (originalColor !== selectedColor) {
-        setScore(prevScore => prevScore - 10); // Subtract 10 points for each color change
-        console.log(`Painted color: ${selectedColor}`);
-      }
-    }
-  };
-
-
-
-  const checkSolution = () => {
+  
+  async function checkSolution() {
     const isSuccess = () => {
       const allButtons = document.querySelectorAll('.canvas-container button');
       const currSolution = Array.from(allButtons).map(button => button.style.backgroundColor);
 
       console.log("Current solution:", currSolution);
-      
       return randomColors.milestoneButtons.every((color, index) => color === currSolution[index]);
     };
 
@@ -103,42 +101,22 @@ export function Game({ userName }) {
     } else {
       setSuccessMessage("Keep Trying! hint: sort by hue");
     }
-  };
+  }
 
-  const saveScore = (score) => {
+  async function saveScore(score) {
     const date = new Date().toLocaleDateString();
     const newScore = { name: userName, score: score, date: date };
 
-    console.log(`Saving score: ${newScore}`);
-    updateScoresLocal(newScore);
-  };
+    await fetch('/api/score', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newScore),
+    });
 
-  function updateScoresLocal(newScore) {
-    let scores = [];
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
-    }
-
-    let found = false;
-    for (const [i, prevScore] of scores.entries()) {
-      if (newScore.score > prevScore.score) {
-        scores.splice(i, 0, newScore);
-        found = true;
-        break;
-      }
-    }
-
-    if (!found) {
-      scores.push(newScore);
-    }
-
-    if (scores.length > 10) {
-      scores.length = 10;
-    }
-
-    localStorage.setItem('scores', JSON.stringify(scores));
+    GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
   }
+
+
 
   return (
     <main>
