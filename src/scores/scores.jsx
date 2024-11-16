@@ -1,16 +1,25 @@
 import React from 'react';
 import './scores.css';
 
-export function Scores({ userName }) {
+export function Scores(props) {
+  const userName = props.userName;
   const [scores, setScores] = React.useState([]);
+
+  const [quote, setQuote] = React.useState('Loading...');
+  const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
+
 
   // Demonstrates calling a service asynchronously so that
   // React can properly update state objects with the results.
   React.useEffect(() => {
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      setScores(JSON.parse(scoresText));
-    }
+    fetch('/api/scores')
+      .then((response) => response.json())
+      .then((scores) => {
+        setScores(scores);
+      });
+
+    setQuote('Show me the code');
+    setQuoteAuthor('Linus Torvalds');
   }, []);
 
   // Demonstrates rendering an array with React
@@ -35,18 +44,7 @@ export function Scores({ userName }) {
   }
 
   
-  const [quote, setQuote] = React.useState('Loading...');
-  const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
-
-  // We only want this to render the first time the component is created and so we provide an empty dependency list.
-  React.useEffect(() => {
-    setQuote('Show me the code');
-    setQuoteAuthor('Linus Torvalds');
-  }, []);
   
-
-  
-
   return (
     <main>
     <div className="scoresPG">
