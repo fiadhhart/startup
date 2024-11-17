@@ -110,10 +110,13 @@ For this delieverable, I styled the application to its final appearance.
    - game, players, scores use useEffect hooks
 
 # Service Deliverable
+ 
  * simon on 3000, startup on 4000
+ 
+ * created Node.js/Express HTTP service
+ * Static middleware for frontend
+ * Calls third party endpoints in scores.jsx to show quotes
+ * Backend service endpoints for creating users, logging in, logging out, saving scores, and retreiving scores
+ * Frontend calls service endpoints with fetch
 
- * setup backend service with endpoints
- * saving scores in gameplay and retreiving scores in scores uses endpoints
- * login/logout/create user uses endpoints
- * retreives quote/author from 3rd party via endpoints
-
+ 
