@@ -110,9 +110,10 @@ For this delieverable, I styled the application to its final appearance.
    - game, players, scores use useEffect hooks
 
 # Service Deliverable
+ * simon on 3000, startup on 4000
 
  * setup backend service with endpoints
  * saving scores in gameplay and retreiving scores in scores uses endpoints
  * login/logout/create user uses endpoints
- 
+ * retreives quote/author from 3rd party via endpoints
 

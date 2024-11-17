@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
@@ -103,7 +103,7 @@ app.use(express.static('public'));
 
 
 
-//FIXME - added because in simon, wasn't told to
+//added because in simon, not in instructions for some reason
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
