@@ -81,3 +81,7 @@ duration 1 year starting 14 sept 2024
 
 
 
+# mongodb
+ view database: https://cloud.mongodb.com/v2/673e4a929412c76551c429d6#/metrics/replicaSet/673e4baa7d17aa54a29988a0/explorer/rental/house/find
+ email used for atlas: https://www.mailinator.com/v4/public/inboxes.jsp?to=superCS
+ 

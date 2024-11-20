@@ -120,3 +120,7 @@ For this delieverable, I styled the application to its final appearance.
  * Frontend calls service endpoints with fetch
 
  
+ 
+ 
+ # notes
+ Made a database.js file. might need to move mongoTest/dbConfig.json to the same directory
