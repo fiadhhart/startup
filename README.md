@@ -124,3 +124,4 @@ For this delieverable, I styled the application to its final appearance.
  
  # notes
  Made a database.js file. might need to move mongoTest/dbConfig.json to the same directory
+ testing git
