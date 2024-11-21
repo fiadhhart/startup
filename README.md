@@ -119,9 +119,6 @@ For this delieverable, I styled the application to its final appearance.
  * Backend service endpoints for creating users, logging in, logging out, saving scores, and retreiving scores
  * Frontend calls service endpoints with fetch
 
- 
- 
- 
- # notes
- Made a database.js file. might need to move mongoTest/dbConfig.json to the same directory
- testing git
+
+# Login Deliverable
+

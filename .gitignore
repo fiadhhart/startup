@@ -6,10 +6,12 @@ node_modules
 dbConfig.json
 
 mongoTest
+mongo_test
 
 prev_versions
 
 authTest
 
 data
-mongo_test
+
+trash
