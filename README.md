@@ -120,5 +120,15 @@ For this delieverable, I styled the application to its final appearance.
  * Frontend calls service endpoints with fetch
 
 
-# Login Deliverable
+# DB/Login Deliverable
 
+ * mongoDB Atlas database created 
+ * user data stored in MongoDB in cluster0, db startup, collections user and score
+ * passwords encrypted
+ * retrieves credentials in MongoDB
+
+ * can create users
+ * can logout user
+ * login requires authentication
+
+ * restricts functionality of seeing scores and playing game unless authenticated
