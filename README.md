@@ -132,3 +132,6 @@ For this delieverable, I styled the application to its final appearance.
  * login requires authentication
 
  * restricts functionality of seeing scores and playing game unless authenticated
+
+# Websocket delieverable
+
