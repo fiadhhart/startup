@@ -139,3 +139,5 @@ For this delieverable, I styled the application to its final appearance.
  * frontend makes webSocket connection
  * data sent over webSocket connection
  * webSocket data displayed - displays other's scores while playing
+
+# DONE!
