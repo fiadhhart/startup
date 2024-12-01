@@ -135,3 +135,7 @@ For this delieverable, I styled the application to its final appearance.
 
 # Websocket delieverable
 
+ * backend listens for webSocket connection
+ * frontend makes webSocket connection
+ * data sent over webSocket connection
+ * webSocket data displayed - displays other's scores while playing
